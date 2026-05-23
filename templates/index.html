@@ -1,25 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>DFIS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Footprint Intelligence Scanner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Digital Footprint Intelligence Scanner</h1>
+    <main class="shell">
+        <section class="hero-panel">
+            <div class="hero-copy">
+                <span class="eyebrow">OSINT breach review</span>
+                <h1>Digital Footprint Intelligence Scanner</h1>
+                <p>Check whether an email appears in known public breaches, estimate exposure risk, and export a clean PDF report.</p>
+            </div>
 
-        <div class="scan-box">
-            <input type="email" id="email" placeholder="target@example.com">
-            <button onclick="startScan()">Start Scan</button>
-        </div>
+            <form class="scan-card" id="scanForm">
+                <label for="email">Email address</label>
+                <div class="input-row">
+                    <input type="email" id="email" name="email" placeholder="name@example.com" autocomplete="email" required>
+                    <button type="submit" id="scanButton">Scan</button>
+                </div>
+                <p class="form-hint" id="statusText">Ready for a new scan.</p>
+            </form>
+        </section>
 
-        <div class="terminal" id="terminal">
-            <p>[+] OSINT modules initialized...</p>
-        </div>
+        <section class="dashboard" aria-live="polite">
+            <div class="summary-panel">
+                <div>
+                    <span class="section-label">Risk score</span>
+                    <div class="score-ring" id="scoreRing" style="--score: 0">
+                        <span id="scoreValue">--</span>
+                    </div>
+                    <strong class="risk-pill unknown" id="riskLabel">UNKNOWN</strong>
+                </div>
+                <div class="profile-block">
+                    <img id="avatar" src="https://www.gravatar.com/avatar/00000000000000000000000000000000?s=160&d=identicon" alt="Generated profile avatar">
+                    <div>
+                        <span class="section-label">Target</span>
+                        <h2 id="targetEmail">No email scanned</h2>
+                        <p id="lookupMessage">Results will appear here after the scan completes.</p>
+                    </div>
+                </div>
+            </div>
 
-        <div id="results"></div>
-    </div>
+            <div class="result-grid">
+                <article class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <span class="section-label">Breach exposure</span>
+                            <h3 id="breachCount">0 known breaches</h3>
+                        </div>
+                        <button class="ghost-button" id="pdfButton" type="button" disabled>Download PDF</button>
+                    </div>
+                    <div class="breach-list" id="breachList">
+                        <div class="empty-state">Run a scan to see public breach records.</div>
+                    </div>
+                </article>
 
-<script src="/static/js/main.js"></script>
+                <article class="panel">
+                    <span class="section-label">Free risk signals</span>
+                    <h3>Signals checked</h3>
+                    <div class="signal-list" id="signalList">
+                        <div class="empty-state">Run a scan to see free OSINT risk signals.</div>
+                    </div>
+                </article>
+
+                <article class="panel wide-panel">
+                    <span class="section-label">Action plan</span>
+                    <h3>Recommended next steps</h3>
+                    <ul class="recommendations" id="recommendations">
+                        <li>Use unique passwords for every account.</li>
+                        <li>Enable multi-factor authentication where available.</li>
+                        <li>Keep monitoring for future exposure.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/js/main.js"></script>
 </body>
 </html>

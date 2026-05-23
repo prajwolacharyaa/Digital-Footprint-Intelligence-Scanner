@@ -7,10 +7,13 @@ Professional Flask-based OSINT and Cybersecurity Intelligence Platform.
 # Features
 
 - Email intelligence scanning
-- Public breach analysis
-- Threat scoring engine
-- Gravatar intelligence
-- Cyberpunk dashboard UI
+- Live Have I Been Pwned breach lookup when an API key is available
+- Free risk scoring from domain, Gravatar, disposable-email, and pattern signals
+- Optional EmailRep enrichment with a free API key
+- Explainable threat scoring engine
+- Gravatar avatar intelligence
+- PDF report download
+- Responsive human-friendly dashboard UI
 - Flask backend
 - HTML/CSS/JavaScript frontend
 - Ethical OSINT architecture
@@ -28,8 +31,9 @@ Professional Flask-based OSINT and Cybersecurity Intelligence Platform.
 - CSS
 - JavaScript
 
-## Database
-- SQLite
+## Integrations
+- Have I Been Pwned API
+- Gravatar
 
 ---
 
@@ -261,6 +265,24 @@ http://127.0.0.1:5000
 
 ---
 
+# HIBP API Key
+
+The scanner no longer returns fake breaches. To enable live breach results, create a `.env` file in the project root:
+
+```bash
+HIBP_API_KEY=your_haveibeenpwned_api_key
+```
+
+Without this key, the app still runs, validates emails, shows the UI, exports PDF reports, and calculates a free risk score from local/domain/Gravatar signals instead of invented breach results.
+
+Optional free EmailRep enrichment:
+
+```bash
+EMAILREP_API_KEY=your_free_emailrep_api_key
+```
+
+---
+
 # Ethical Disclaimer
 
 This project is intended strictly for:
@@ -279,7 +301,6 @@ Unauthorized usage is prohibited.
 
 - JWT Authentication
 - Scan History
-- PDF Report Export
 - AI Risk Analysis
 - Username Enumeration
 - WebSocket Live Updates
