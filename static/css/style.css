@@ -1,0 +1,45 @@
+body {
+    background: #020617;
+    color: #00ff99;
+    font-family: monospace;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 80px;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+.scan-box {
+    margin: 40px 0;
+}
+
+input {
+    padding: 15px;
+    width: 400px;
+    background: black;
+    border: 1px solid #00ff99;
+    color: white;
+}
+
+button {
+    padding: 15px 30px;
+    background: #00ff99;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.terminal, .result-card {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #00ff99;
+    background: rgba(15,23,42,0.8);
+    box-shadow: 0 0 15px #00ff99;
+}
