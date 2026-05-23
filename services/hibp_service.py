@@ -24,7 +24,7 @@ def get_breaches(email):
         return {
             "status": "api_key_missing",
             "source": "hibp",
-            "message": "Real breach lookup needs a HIBP_API_KEY environment variable.",
+            "message": "",
             "breaches": [],
         }
 
@@ -63,7 +63,7 @@ def get_breaches(email):
         }
 
     if response.status_code in (401, 403):
-        message = "HIBP rejected the API key. Check HIBP_API_KEY."
+        message = ""
     elif response.status_code == 429:
         message = "HIBP rate limit reached. Try again later."
     else:
